@@ -16,5 +16,6 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
+gem 'capybara'
 
 gem "rubocop", "~> 1.7"
