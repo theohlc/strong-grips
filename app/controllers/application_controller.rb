@@ -26,5 +26,20 @@ class ApplicationController < Sinatra::Base
 			redirect '/failure'
 		end
 	end
+
+	get "/login" do
+		erb :login
+	end
+
+	post '/login' do
+		strong_user = User.find_by(username: params[:username])
+
+		if strong_user.authenticate(params[:password])
+			session[:user_id] = strong_user.id
+			"success"#redirect '/success'
+		else
+			"failure"#redirect '/failure'
+		end
+	end
     
 end
