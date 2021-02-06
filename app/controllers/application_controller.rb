@@ -54,13 +54,16 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/account" do
+		@user = User.find(session[:user_id])
 		hang = Hang.new(
 			exercise: params[:exercise],
 			duration: params[:duration],
 			user_id: session[:user_id],
 			time: Time.now
 		)
-		binding.pry
+		hang.save
+		#binding.pry
+		erb :account
 	end
     
 end
