@@ -22,3 +22,8 @@ Welcome, <%=@user.username%>!<br>
     </tr>
   <% end %>
 </table>
+
+<form action="/account" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form> 

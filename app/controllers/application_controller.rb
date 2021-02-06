@@ -63,7 +63,13 @@ class ApplicationController < Sinatra::Base
 		)
 		hang.save
 		#binding.pry
-		erb :account
+		redirect to '/account'
+	end
+
+	delete "/account" do
+		#binding.pry
+		Hang.where("user_id = #{session[:user_id]}").destroy_all
+		redirect to '/account'
 	end
     
 end
