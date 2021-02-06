@@ -1,7 +1,7 @@
 class CreateHangs < ActiveRecord::Migration[6.1]
   def change
     create_table :hangs do |t|
-      t.string :type
+      t.string :exercise
       t.integer :duration #should be in seconds
       t.integer :user_id #belongs to user
       

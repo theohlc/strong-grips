@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_02_01_221717) do
 
   create_table "hangs", force: :cascade do |t|
-    t.string "type"
+    t.string "exercise"
     t.integer "duration"
     t.integer "user_id"
     t.datetime "time"

@@ -53,8 +53,14 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
-	post "/account do" do
-		
+	post "/account" do
+		hang = Hang.new(
+			exercise: params[:exercise],
+			duration: params[:duration],
+			user_id: session[:user_id],
+			time: Time.now
+		)
+		binding.pry
 	end
     
 end
