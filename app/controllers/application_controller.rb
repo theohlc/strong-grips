@@ -36,10 +36,25 @@ class ApplicationController < Sinatra::Base
 
 		if strong_user.authenticate(params[:password])
 			session[:user_id] = strong_user.id
-			"success"#redirect '/success'
+			redirect '/account'
 		else
 			"failure"#redirect '/failure'
 		end
+	end
+
+	get "/account" do
+		if !!session[:user_id]
+			#binding.pry
+			@user = User.find(session[:user_id])
+			#binding.pry
+			erb :account
+		else
+			redirect "/login"
+		end
+	end
+
+	post "/account do" do
+		
 	end
     
 end
