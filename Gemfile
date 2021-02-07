@@ -20,4 +20,3 @@ gem 'capybara'
 
 gem "rubocop", "~> 1.7"
 
-gem 'strong-grips'
