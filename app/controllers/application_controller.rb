@@ -92,5 +92,16 @@ class ApplicationController < Sinatra::Base
 
 		erb :edit
 	end
+
+	patch '/account/:hang_id' do
+		hang = Hang.find(params[:hang_id])
+
+		hang.exercise = params["exercise"]
+		hang.duration = params["duration"]
+
+		hang.save
+
+		redirect '/account'
+	end 
     
 end
