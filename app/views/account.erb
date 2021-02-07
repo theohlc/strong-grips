@@ -19,7 +19,7 @@ Welcome, <%=@user.username%>!<br>
   </tr>
   <% Hang.where("user_id = #{session[:user_id]}").each do |hang| %>   
     <tr>
-      <th><a href=<%= "/account/"+hang.id%>>edit</a>
+      <th><a href=<%= "/account/"+hang.id.to_s%>>edit</a>
       <th><%= hang.exercise%></th>
       <th><%= hang.duration%></th>
       <th><%= "#{hang.time.month}-#{hang.time.day}-#{hang.time.year}"%></th>
