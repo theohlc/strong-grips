@@ -96,8 +96,8 @@ class ApplicationController < Sinatra::Base
 	patch '/account/:hang_id' do
 		hang = Hang.find(params[:hang_id])
 
-		hang.exercise = params["exercise"]
-		hang.duration = params["duration"]
+		!params["exercise"].empty? ? (hang.exercise = params["exercise"]) : nil
+		!params["duration"].empty? ? (hang.duration = params["duration"]) : nil
 
 		hang.save
 
