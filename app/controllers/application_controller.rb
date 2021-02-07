@@ -71,5 +71,10 @@ class ApplicationController < Sinatra::Base
 		Hang.where("user_id = #{session[:user_id]}").destroy_all
 		redirect to '/account'
 	end
+
+	post "/signout" do
+		session.clear
+		redirect to '/'
+	end
     
 end
