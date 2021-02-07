@@ -20,7 +20,9 @@ class ApplicationController < Sinatra::Base
 	post "/signup" do
 		user = User.new(username: params[:username], password: params[:password])
 
-		if user.save
+		#User.where("username = ?", user.username)[0] #false if username is free
+
+		if !User.where("username = ?", user.username)[0] && user.save
 			redirect '/login'
 		else
 			redirect '/failure'
@@ -38,8 +40,12 @@ class ApplicationController < Sinatra::Base
 			session[:user_id] = strong_user.id
 			redirect '/account'
 		else
-			"failure"#redirect '/failure'
+			redirect '/failure'
 		end
+	end
+
+	get "/failure" do
+		erb :failure
 	end
 
 	get "/account" do
