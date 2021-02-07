@@ -84,13 +84,13 @@ class ApplicationController < Sinatra::Base
 	end
 	
 	get "/account/:hang_id" do
-		hang = Hang.find(params[:hang_id])
-		
-		if hang.user_id != session[:user_id]
+		@hang = Hang.find(params[:hang_id])
+
+		if @hang.user_id != session[:user_id]
 			redirect to '/account'
 		end
 
-		"This hang belongs to you"
+		erb :edit
 	end
     
 end
