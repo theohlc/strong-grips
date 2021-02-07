@@ -1,8 +1,6 @@
 # Strong::Grips
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/strong/grips`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Strong grips creates a html site for you to manage your grip strength exercises. Multiple users can make accounts. Each user can add any number of unique grip strength exercises, with a duration to their page. The date of each exercise is auto recorded.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Use sinatra to start up the application by entering "shotgun" into the console. Then using your prefered web browser navigate to localhost:9393 From there sign up, log in, and begin recording your training.
 
 ## Development
 
@@ -32,7 +30,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/strong-grips.
+Bug reports and pull requests are welcome on GitHub at https://github.com/theohlc/strong-grips. Please add comments.
 
 ## License
 
