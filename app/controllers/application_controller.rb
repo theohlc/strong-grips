@@ -35,8 +35,9 @@ class ApplicationController < Sinatra::Base
 
 	post '/login' do
 		strong_user = User.find_by(username: params[:username])
-
-		if strong_user.authenticate(params[:password])
+		if strong_user == nil
+			redirect '/failure'
+		elsif strong_user.authenticate(params[:password])
 			session[:user_id] = strong_user.id
 			redirect '/account'
 		else
