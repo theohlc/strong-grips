@@ -22,6 +22,8 @@ class ApplicationController < Sinatra::Base
 
 		#User.where("username = ?", user.username)[0] #false if username is free
 
+		redirect '/failure' if user.username == "" || user.password == ""
+
 		if !User.where("username = ?", user.username)[0] && user.save
 			redirect '/login'
 		else
