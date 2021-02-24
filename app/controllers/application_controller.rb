@@ -83,6 +83,7 @@ class ApplicationController < Sinatra::Base
 
 	get "/remove/:hang_id" do
 		#binding.pry
+		redirect '/failure' if hang.user_id != session[:user_id]
 		Hang.where("id = #{params[:hang_id]}").destroy_all
 		redirect to '/account'
 	end
@@ -104,6 +105,8 @@ class ApplicationController < Sinatra::Base
 
 	patch '/account/:hang_id' do
 		hang = Hang.find(params[:hang_id])
+
+		redirect '/failure' if hang.user_id != session[:user_id]
 
 		!params["exercise"].empty? ? (hang.exercise = params["exercise"]) : nil
 		!params["duration"].empty? ? (hang.duration = params["duration"]) : nil
