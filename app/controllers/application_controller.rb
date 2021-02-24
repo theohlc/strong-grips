@@ -70,14 +70,20 @@ class ApplicationController < Sinatra::Base
 			user_id: session[:user_id],
 			time: Time.now
 		)
+		redirect '/failure' if hang.exercise == "" || hang.duration == ""
 		hang.save
-		#binding.pry
 		redirect to '/account'
 	end
 
 	delete "/account" do
 		#binding.pry
 		Hang.where("user_id = #{session[:user_id]}").destroy_all
+		redirect to '/account'
+	end
+
+	get "/remove/:hang_id" do
+		#binding.pry
+		Hang.where("id = #{params[:hang_id]}").destroy_all
 		redirect to '/account'
 	end
 

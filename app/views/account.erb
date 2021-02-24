@@ -24,6 +24,7 @@ Welcome, <%=@user.username%>!<br>
       <th><%= hang.exercise%></th>
       <th><%= hang.duration%></th>
       <th><%= "#{hang.time.month}-#{hang.time.day}-#{hang.time.year}"%></th>
+      <th><a href=<%= "/remove/"+hang.id.to_s%>>delete</a>
     </tr>
   <% end %>
 </table>
