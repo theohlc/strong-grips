@@ -20,8 +20,6 @@ class ApplicationController < Sinatra::Base
 	post "/signup" do
 		user = User.new(username: params[:username], password: params[:password])
 
-		#User.where("username = ?", user.username)[0] #false if username is free
-
 		redirect '/failure' if user.username == "" || user.password == ""
 
 		if !User.where("username = ?", user.username)[0] && user.save
@@ -53,9 +51,7 @@ class ApplicationController < Sinatra::Base
 
 	get "/account" do
 		if !!session[:user_id]
-			#binding.pry
 			@user = User.find(session[:user_id])
-			#binding.pry
 			erb :account
 		else
 			redirect "/login"
@@ -76,13 +72,11 @@ class ApplicationController < Sinatra::Base
 	end
 
 	delete "/account" do
-		#binding.pry
 		Hang.where("user_id = #{session[:user_id]}").destroy_all
 		redirect to '/account'
 	end
 
 	get "/remove/:hang_id" do
-		#binding.pry
 		redirect '/failure' if hang.user_id != session[:user_id]
 		Hang.where("id = #{params[:hang_id]}").destroy_all
 		redirect to '/account'
